@@ -37,3 +37,11 @@ jobs:
         echo "Training and testing model..."
         pip install scikit-learn joblib
         python ModelCleaning/train_test_dataset.py
+
+    - name: Commit cleaned data
+      run: |
+        git config user.name "L00196904"
+        git config user.email "l00196904@atu.ie"
+        git add ModelCleaning/cleaned_data.csv
+        git diff --cached --quiet || git commit -m "Update cleaned data"
+        git push
