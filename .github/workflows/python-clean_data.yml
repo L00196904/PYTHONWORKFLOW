@@ -8,8 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - run: |
-      echo ${{ github.workspace }}
-      echo $GITHUB_WORKSPACE
+        echo ${{ github.workspace }}
+        echo $GITHUB_WORKSPACE
 
   job2:
     runs-on: ubuntu-latest
