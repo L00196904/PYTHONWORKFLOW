@@ -50,9 +50,9 @@ jobs:
         git push
 
     - name: Commit and push PKL file
-        run: |
-          git config user.name "L00196904"
-          git config user.email "l00196904@atu.ie"
-          git add ModelCleaning/geSalaryModel.pkl
-          git commit -m "Add trained model PKL" || echo "No changes to commit"
-          git push
+      run: |
+        git config user.name "L00196904"
+        git config user.email "l00196904@atu.ie"
+        git add ModelCleaning/geSalaryModel.pkl
+        git commit -m "Add trained model PKL" || echo "No changes to commit"
+        git push
