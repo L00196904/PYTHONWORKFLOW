@@ -10,6 +10,7 @@ jobs:
 
       - name: Build project
         run: |
+          pwd
           mkdir dist
           echo "Arefact Demo" > dist/output.txt
 
