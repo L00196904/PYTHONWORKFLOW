@@ -29,3 +29,28 @@ jobs:
       - name: Upload to GCS
         run: |
           gsutil cp -r dist/* gs://artefact-buckett/builds/${{ github.run_id }}/
+
+  DownloadBucket:
+      runs-on: ubuntu-latest
+      needs: upload
+
+      steps:
+        - name: Authenticate to GCP
+          uses: google-github-actions/auth@v2
+          with:
+            credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+        - name: Set up Cloud SDK
+          uses: google-github-actions/setup-gcloud@v2
+
+        - name: Create local directory
+          run: mkdir -p downloaded
+
+        - name: Copy files from GCS bucket
+          run: |
+            gsutil cp -r gs://artefact-buckett/builds/${{ github.run_id }}/* downloaded/
+
+        - name: List downloaded files
+          run: |
+            echo "Contents of downloaded directory:"
+            ls -R downloaded
